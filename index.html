@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Visdown - Markdown for Visualisation</title>
+  <title>Saloni</title>
   <meta name="description" content="Create Simple Visualisation Charts with Markdown">
 
   <script src="lib/vega.min.js"></script>
@@ -16,33 +16,93 @@
   <style>
     #visdown-output {max-width: 800px; margin: 0 auto;}
     #visdown-input {display: none;}
-  </style>  
+  </style>
 </head>
 <body>
 
-<div id="visdown-input">  
-  
-# Bar Plot
-  
+<div id="visdown-input">
+
+## Saloni
+# Notes of Each Denomination Over Time
+
 ```vis
-data: 
-  url: data/cars.csv
-mark: point
-encoding:
-  x: 
-    field: kmpl
-    type: Q
-  y:   
-    field: price
-    type: Q
-  color:
-    field: type
-    type: N
-  size:
-    field: bhp
-    type: Q
+width: 800
+height: 400
+data:
+  url: data/notes.csv
+
+layer:
+- mark: line
+  size: 10
+  encoding:
+    x:
+      field: year
+      type: quantitative
+      bin:
+        maxbins: 38
+
+    y:
+      field: number
+      type: quantitative
+
+
+    color:
+      field: denom
+      type: nominal
+
+    opacity:
+      value: 0.8
+    size:
+      value: 5
+
+
+    size:
+      value: 70
+    color:
+      value: 000000
+
+
 ```
-    
+
+
+
+```vis
+width: 800
+height: 400
+data:
+  url: data/notes.csv
+layer:
+- mark: circle
+  encoding:
+    x:
+      field: year
+      type: temporal
+      scale:
+        type: log
+
+
+    y:
+      field: money
+      type: quantitative
+
+    size:
+      field: value
+
+    color:
+      field: denom
+
+- mark: tick
+  encoding:
+    x:
+     field: denom
+    y:
+     field: year
+     type: temporal
+
+
+
+```
+
 </div>
 <div id="visdown-output"></div>
 <script src="visdown.js"></script>

@@ -103,6 +103,24 @@ layer:
 
 ```
 
+```vis
+width: 600
+data:
+  url: data/notes.csv
+mark: line
+encoding:
+  x:
+    field: year
+    type: nominal
+  y:
+    field: value
+    type: quantitative
+  color:
+    field: denom
+
+```
+
+
 </div>
 <div id="visdown-output"></div>
 <script src="visdown.js"></script>
